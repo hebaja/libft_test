@@ -11,6 +11,7 @@ void	test_ft_strjoin()
 	char	*ptr;
 
 	printf(">>> FT_STRJOIN: ");
+	result = 1;
 	ptr = ft_strjoin(str1, str2);
 	output = ft_strncmp(ptr, "Nevermore", 9);
 	if (output)
