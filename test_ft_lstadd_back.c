@@ -5,19 +5,19 @@ int	test_add_back(t_list **lst, char *str, int s)
 {
 	int	output;
 	int	size;
-	t_list	*l;
-	t_list	*l_f;
-	t_list	*l_l;
+	t_list	*new_lst;
+	t_list	*first_lst;
+	t_list	*last_lst;
 
-	l = ft_lstnew((char *)str);
-	ft_lstadd_back(lst, l);
-	l_f = *lst;
-	l_l = ft_lstlast(*lst);
-	output = ft_strncmp(l_l->content, str, 9);
-	if (output)
+	new_lst = ft_lstnew((char *)str);
+	ft_lstadd_back(lst, new_lst);
+	first_lst = *lst;
+	last_lst = ft_lstlast(*lst);
+	output = ft_strncmp(last_lst->content, str, 9);
+	if (output) //If true strings are different
 		return (0);
-	output = ft_strncmp(l_f->content, "Nevermore", ft_strlen(str));
-	if (output)
+	output = ft_strncmp(first_lst->content, "Nevermore", ft_strlen(str));
+	if (output) //If true strings are differnt
 		return (0);
 	size = ft_lstsize(*lst);
 	if (size != s)
@@ -34,7 +34,7 @@ void	test_ft_lstadd_back()
 	char	*str2 = ft_strdup("Dream Theater");
 	char	*str3 = ft_strdup("Cripper");
 	char	*str4 = ft_strdup("Thin Lizzy");
-	t_list	*lst = ft_lstnew(str1);
+	t_list	*lst = ft_lstnew(str1); //This lst (Nevermore) must always be the first
 	printf(">>> FT_LSTADD_BACK: ");
 	result = 1;
 	size = 1;

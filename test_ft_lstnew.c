@@ -11,14 +11,14 @@ void	test_ft_lstnew()
 	result = 1;
 	output = 1;
 	i = -1;
-	t_list	*str_lst;
+	t_list	*lst;
 	t_list	*arr_lst;
-	str_lst = ft_lstnew((char *)str);
-	output = ft_strncmp((char *)str_lst->content, "Nevermore", 9);
+	lst = ft_lstnew((char *)str);
+	output = ft_strncmp((char *)lst->content, "Nevermore", 9);
 	if (result)
 		output = 0;
-	if(str_lst->next != NULL)
+	if(lst->next != NULL)
 		output = 0;
 	show(result);
-	free(str_lst);
+	free(lst);
 }

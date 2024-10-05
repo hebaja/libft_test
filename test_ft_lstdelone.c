@@ -15,10 +15,10 @@ void	test_ft_lstdelone()
 	size = 0;
 	l1 = ft_lstnew(str);
 	output = ft_strncmp(l1->content, "Nevermore", 9);
-	if (output)
+	if (output) // If true, strings are different
 		result = 0;
-	ft_lstdelone(l1, del_node_content);
-	output = l1 == NULL;
+	ft_lstdelone(l1, free_node_content);
+	output = l1 == NULL; //*l1 must be null after del
 	if (output)
 		result = 0;
 	show(result);

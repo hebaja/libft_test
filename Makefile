@@ -9,7 +9,7 @@ SRCS=show.c test_ft_isalpha.c test_ft_isdigit.c test_ft_isalnum.c test_ft_isasci
 		test_ft_substr.c test_ft_strjoin.c test_ft_strtrim.c test_ft_split.c test_ft_itoa.c test_ft_strmapi.c test_ft_striteri.c test_ft_putchar_fd.c \
 		test_ft_putstr_fd.c test_ft_putendl_fd.c test_ft_putnbr_fd.c 
 BONUS_SRCS=test_ft_lstnew.c test_ft_lstadd_front.c test_ft_lstsize.c test_ft_lstlast.c test_ft_lstadd_back.c test_ft_lstdelone.c test_ft_lstclear.c \
-		test_ft_lstiter.c test_ft_lstmap.c del_node_content.c add_node.c add_lst_node.c iter_lst_show.c test_del.c
+		test_ft_lstiter.c test_ft_lstmap.c del_node_content.c add_node.c add_lst_node.c iter_lst_show.c test_del.c free_node_content.c
 OBJS=$(SRCS:.c=.o)
 BONUS_OBJS=$(BONUS_SRCS:.c=.o)
 

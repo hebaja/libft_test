@@ -11,19 +11,19 @@ int	test_add_front(t_list **lst, char *str, int s)
 	ft_lstadd_front(lst, l);
 	output = ft_strncmp((char *)l->content, str, 9);
 	size = ft_lstsize(*lst);
-	if (output)
+	if (output) //if true, strings are different
 		return (0);
 	if (s < 2)
 	{
-		if (l->next != NULL)
+		if (l->next != NULL)// Case size < 2 l->next must be null. There's only one.
 			return (0);
 	}
 	else
 	{
-		if (l->next == NULL)
+		if (l->next == NULL)// Case size >= 2 l-> must must be null. There's more than one.
 			return (0);
 	}
-	if (size != s)
+	if (size != s)// Test size of lsts
 		return (0);
 	return (1);
 }

@@ -8,9 +8,9 @@ int	test_lstsize_front(t_list **lst, char *str, int s)
 	int	size;
 
 	l = ft_lstnew(str);
-	ft_lstadd_front(lst, l);
+	ft_lstadd_front(lst, l);// Adds to the front of lsts
 	size = ft_lstsize(*lst);
-	if (size != s)
+	if (size != s) //tests size
 		return (0);
 	return (1);
 }
@@ -21,9 +21,9 @@ int	test_lstsize_back(t_list **lst, char *str, int s)
 	int	size;
 
 	l = ft_lstnew(str);
-	ft_lstadd_back(lst, l);
+	ft_lstadd_back(lst, l);// Adds to the back of lsts
 	size = ft_lstsize(*lst);
-	if (size != s)
+	if (size != s) //tests size
 		return (0);
 	return (1);
 }
@@ -44,9 +44,10 @@ void	test_ft_lstsize()
 	t_list	*lst2 = ft_lstnew(f1);
 	printf(">>> FT_LSTSIZE: ");
 	result = 1;
+	//Add front tests
 	size = 1;
 	output = ft_lstsize(lst1);
-	if (output != 1)
+	if (output != 1) //First list must be one
 		result = 0;
 	output = test_lstsize_front(&lst1, str2, ++size);
 	if (!output)
@@ -54,8 +55,11 @@ void	test_ft_lstsize()
 	output = test_lstsize_front(&lst1, str3, ++size);
 	if (!output)
 		result = 0;
-	
+	//Add back tests
 	size = 1;
+	output = ft_lstsize(lst2);
+	if (output != 1) //First list must be one
+		result = 0;
 	output = test_lstsize_back(&lst2, f2, ++size);
 	if (!output)
 		result = 0;
