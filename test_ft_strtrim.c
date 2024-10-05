@@ -34,4 +34,5 @@ void	test_ft_strtrim()
 	if (ptr[0] != '\0')
 		result = 0;
 	show(result);
+	free(ptr);
 }

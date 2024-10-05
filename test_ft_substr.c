@@ -20,4 +20,5 @@ void	test_ft_substr()
 	if (ptr != NULL)
 		result = 0;
 	show(result);
+	free(ptr);
 }

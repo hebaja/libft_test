@@ -28,4 +28,5 @@ void	test_ft_strjoin()
 	if (output)
 		result = 0;
 	show(result);
+	free(ptr);
 }

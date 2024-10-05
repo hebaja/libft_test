@@ -6,6 +6,7 @@ void	test_ft_strrchr()
 	char	*str = "Beneath the Demon Moon.\0";
 	char	*ptr1;
 	char	*ptr2;
+	char	*ptr3;
 	int	output;
 	int	result;
 
@@ -21,6 +22,9 @@ void	test_ft_strrchr()
 	if(*ptr2 != '\0')
 		result = 0;
 	if(ptr2 != &str[23])
+		result = 0;
+	ptr3 = ft_strrchr(str, 'Z');
+	if(ptr3 != NULL)
 		result = 0;
 	show(result);
 }

@@ -36,4 +36,5 @@ void	test_ft_split()
 	if (strs[5] != NULL)
 		result = 0;
 	show(result);
+	free(strs);
 }

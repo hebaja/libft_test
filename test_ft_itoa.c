@@ -9,6 +9,7 @@ void	test_ft_itoa()
 
 	printf(">>> FT_ITOA: ");
 	result = 1;
+
 	str = ft_itoa(42);
 	output = ft_strncmp(str, "42", 2);
 	if (output)
@@ -30,4 +31,5 @@ void	test_ft_itoa()
 	if (output)
 		result = 0;
 	show(result);
+	free(str);
 }

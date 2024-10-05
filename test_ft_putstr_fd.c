@@ -7,7 +7,7 @@ void	test_ft_putstr_fd()
 	int	output;
 	char	buf[10];
 	char    *file = "output.txt";
-	char	*str = "Nevermore\0";
+	char	*str = "Nevermore";
 	char	*ptr;
 	int	fd_w = open(file, O_TRUNC | O_WRONLY);
 	int     fd_o = open(file, O_RDONLY);

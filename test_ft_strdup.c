@@ -15,5 +15,6 @@ void	test_ft_strdup()
 	if (output)
 		result = 0;
 	show(result);
+	free(ptr);
 }
 

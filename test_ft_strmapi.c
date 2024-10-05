@@ -30,4 +30,5 @@ void	test_ft_strmapi()
 	if (output)
 		result = 0;
 	show(result);
+	free(ptr1);
 }

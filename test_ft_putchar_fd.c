@@ -13,7 +13,7 @@ void	test_ft_putchar_fd()
 	printf(">>> FT_PUTCHAR_FD: ");
 	result = 1;
 	if (fd_w == -1)
-		printf("file not found.");
+		printf("file not found. ");
 	ft_putchar_fd('c', fd_w);
 	read(fd_o, buf, 1);
 	c = buf[0];
