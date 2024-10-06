@@ -1,5 +1,6 @@
 #include "../libft.h"
 #include "test.h"
+#include <fcntl.h>
 
 void	test_ft_putchar_fd()
 {
@@ -7,7 +8,7 @@ void	test_ft_putchar_fd()
 	char    *file = "output.txt";
 	char	buf[1];
 	char	c;
-	int	fd_w = open(file, O_TRUNC | O_WRONLY);
+	int	fd_w = open(file, O_TRUNC | O_WRONLY | O_CREAT, 0664);
 	int     fd_o = open(file, O_RDONLY);
 
 	printf(">>> FT_PUTCHAR_FD: ");

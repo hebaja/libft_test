@@ -9,7 +9,7 @@ void	test_ft_putendl_fd()
 	char    *file = "output.txt";
 	char	*str;
 	char	*ptr;
-	int	fd_w = open(file, O_TRUNC | O_WRONLY);
+	int	fd_w = open(file, O_TRUNC | O_WRONLY | O_CREAT, 0664);
 	int     fd_o = open(file, O_RDONLY);
 
 	str = (char *)malloc(sizeof(char) * 10);

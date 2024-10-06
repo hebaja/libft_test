@@ -9,7 +9,7 @@ void	test_ft_putstr_fd()
 	char    *file = "output.txt";
 	char	*str = "Nevermore";
 	char	*ptr;
-	int	fd_w = open(file, O_TRUNC | O_WRONLY);
+	int	fd_w = open(file, O_TRUNC | O_WRONLY | O_CREAT, 0664);
 	int     fd_o = open(file, O_RDONLY);
 
 	printf(">>> FT_PUTSTR_FD: ");

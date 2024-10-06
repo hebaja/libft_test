@@ -56,6 +56,7 @@ void	del_node_content(void *cont);
 void	add_node(t_list **lst, t_list *l, char *str);
 void	add_lst_node(t_list **lst, char *str);
 void	iter_lst_show(void *cont);
+void	iter_lst_fd(void *cont);
 void	test_del();
 void	free_node_content(void *cont);
 
