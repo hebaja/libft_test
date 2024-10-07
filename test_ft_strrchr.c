@@ -3,7 +3,7 @@
 
 void	test_ft_strrchr()
 {
-	char	*str = "Beneath the Demon Moon.\0";
+	char	*str = "Beneath the Demon Moon.";
 	char	*ptr1;
 	char	*ptr2;
 	char	*ptr3;
