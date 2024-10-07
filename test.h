@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "../libft.h"
+#include "../libft_bonus.h"
 
 # define ASCII_LIMIT 127
 
