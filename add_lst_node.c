@@ -1,4 +1,4 @@
-#include "../libft_bonus.h"
+#include "../libft.h"
 
 void	add_lst_node(t_list **lst, char *str)
 {

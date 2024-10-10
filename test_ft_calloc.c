@@ -29,10 +29,10 @@ void	test_ft_calloc()
 			result = 0;
 	}
 	zero_ptr = ft_calloc(0, 10);
-	if (zero_ptr != NULL)
+	if (zero_ptr == NULL)
 		result = 0;
 	zero_ptr = ft_calloc(10, 0);
-	if (zero_ptr != NULL)
+	if (zero_ptr == NULL)
 		result = 0;
 	arr_overflow = ft_calloc(4, 536870912);
 	if (arr_overflow != NULL)
