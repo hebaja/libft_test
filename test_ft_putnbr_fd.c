@@ -1,5 +1,6 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
 #include "test.h"
+#include <stdio.h>
 
 Test(ft_putnbr_fd, basic_test) {
     char *file = "outputs/putnbr.txt";
@@ -13,7 +14,7 @@ Test(ft_putnbr_fd, basic_test) {
 
     read(fd_o, buf, 6);
 
-    cr_expect_str_eq(buf, "123450", "Number written does not match.");
+    cr_expect_eq(strncmp(buf, "123450", 6), 0, "Number written does not match.");
     close(fd_w);
     close(fd_o);
 }
