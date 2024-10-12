@@ -1,5 +1,5 @@
 #include <string.h>  // For strncmp
-#include "../libft.h"    // Include your header file with the prototypes
+#include "test.h"    // Include your header file with the prototypes
 #include "criterion-2.4.2/include/criterion/criterion.h"
 
 Test(ft_memcpy_suite, test_ft_memcpy)

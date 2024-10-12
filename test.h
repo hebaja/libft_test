@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../libft.h"
+# include "../libft/libft.h"
 
 # define ASCII_LIMIT 127
 

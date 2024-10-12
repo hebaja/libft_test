@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_calloc, basic_test) {
     char *ptr = ft_calloc(1, 10);

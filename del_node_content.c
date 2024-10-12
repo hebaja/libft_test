@@ -1,4 +1,4 @@
-#include "../libft.h"
+#include "test.h"
 
 void	del_node_content(void *cont)
 {

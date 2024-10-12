@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_lstlast, last_element_in_list) {
     t_list *lst = ft_lstnew(ft_strdup("Thin Lizzy"));

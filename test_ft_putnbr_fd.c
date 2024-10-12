@@ -1,5 +1,4 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
 #include "test.h"
 
 Test(ft_putnbr_fd, basic_test) {

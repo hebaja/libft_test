@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_memmove, basic_test) {
     char str[12] = "abcdefghijk";

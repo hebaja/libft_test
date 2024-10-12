@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "../libft.h"
+#include "test.h"
 
 void	iter_lst_fd(void *cont)
 {

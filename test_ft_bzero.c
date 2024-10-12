@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_bzero, basic_test) {
     char str[17] = "zero this string\0";

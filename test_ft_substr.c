@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_substr, extract_substring) {
     char *ptr = ft_substr("Nevermore", 0, 9);

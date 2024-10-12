@@ -1,7 +1,5 @@
-// #include <criterion/criterion.h>
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"  // Include your header file with the prototype for ft_isalpha
-#include "test.h"
+#include "test.h"  // Include your header file with the prototype for ft_isalpha
 
 // Test function using Criterion
 Test(ft_isalpha_suite, test_ft_isalpha)

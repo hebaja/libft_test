@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_atoi, basic_tests) {
     cr_expect_eq(ft_atoi("1234"), 1234);

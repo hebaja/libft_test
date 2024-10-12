@@ -12,7 +12,7 @@ TESTS = test_ft_bzero.c test_ft_isprint.c  test_ft_memcpy.c test_ft_putstr_fd.c 
 		del_node_content.c free_node_content.c iter_lst_fd.c iter_lst_show.c show.c
 BONUS_TESTS = test_ft_lstclear.c test_ft_lstadd_back.c test_ft_lstsize.c test_ft_lstadd_front.c test_ft_lstlast.c test_ft_lstnew.c \
 				test_ft_lstdelone.c test_ft_lstiter.c test_ft_lstmap.c
-LIBRARY = ../libft.a
+LIBRARY = ../libft/libft.a
 
 # Compile all test files with Criterion and your static library
 test: $(TESTS) $(LIBRARY)

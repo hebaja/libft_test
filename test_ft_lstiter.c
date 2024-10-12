@@ -1,4 +1,3 @@
-#include "../libft.h"
 #include "criterion-2.4.2/include/criterion/criterion.h"
 #include "test.h"
 

@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_lstadd_front, list_add_front) {
     t_list *lst = ft_lstnew(ft_strdup("Nevermore"));

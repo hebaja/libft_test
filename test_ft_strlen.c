@@ -1,6 +1,5 @@
-// #include <criterion/criterion.h>
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"  // Include your header file with the prototypes
+#include "test.h"  // Include your header file with the prototypes
 
 Test(ft_strlen_suite, test_ft_strlen)
 {

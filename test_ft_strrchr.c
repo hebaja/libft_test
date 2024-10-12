@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h" 
+#include "test.h" 
 #include <stdio.h>
 
 Test(ft_strrchr, locate_last_occurrence) {
@@ -16,8 +16,6 @@ Test(ft_strrchr, locate_last_occurrence) {
     cr_assert_null(ptr, "Expected NULL for non-existent character.");
 
 	ptr = ft_strrchr(str, 'D' + 256);
-
-	printf("-> %s\n", str);
 
     cr_expect_str_eq(ptr, "Demon Moon.", "Failed to find D");
 }

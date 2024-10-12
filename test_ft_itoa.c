@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_itoa, basic_test) {
     cr_expect_str_eq(ft_itoa(42), "42");

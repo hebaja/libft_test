@@ -1,5 +1,5 @@
 #include "criterion-2.4.2/include/criterion/criterion.h"
-#include "../libft.h"
+#include "test.h"
 
 Test(ft_strjoin, join_strings) {
     char *result = ft_strjoin("Never", "more");
