@@ -1,54 +1,23 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
 
-void	test_ft_strnstr()
+Test(ft_strnstr, basic)
 {
-	int	result;
-	int	output;
-	char	*big = "kernel panic";
-	char	*little = "pan";
-	char	*not_found = "zzz";
-	char	*last = "c";
-	char	*empty = "";
-	char	*ptr;
+    char    *big = "kernel panic";
+    char    *little = "pan";
+    char    *not_found = "zzz";
+    char    *empty = "";
+    char    *ptr;
 
-	printf(">>> FT_STRNSTR: ");
-	result = 1;
-	ptr = ft_strnstr(big, little, 12);
-	output = ft_strncmp(ptr, "panic", 5);
-	if (output)
-		result = 0;
-	ptr = ft_strnstr(big, little, 11);
-	output = ft_strncmp(ptr, "panic", 5);
-	if (output)
-		result = 0;
-	ptr = ft_strnstr(big, little, 10);
-	output = ft_strncmp(ptr, "panic", 5);
-	if (output)
-		result = 0;
-	ptr = ft_strnstr(big, little, 9);
-	if (ptr != 0)
-		result = 0;
-	ptr = ft_strnstr(big, little, 8);
-	if (ptr != 0)
-		result = 0;
-	ptr = ft_strnstr(big, not_found, 12);
-	if (ptr != 0)
-		result = 0;
-	ptr = ft_strnstr(big, empty, 12);
-	if (ptr == 0)
-		result = 0;
-	output = ft_strncmp(ptr, "kernel panic", 12);
-	if (output)
-		result = 0;
-	ptr = ft_strnstr(big, last, 12);
-	if (ptr == 0)
-		result = 0;
-	output = ft_strncmp(ptr, "c", 1);
-	if (output)
-		result = 0;
-	show(result);
+    ptr = ft_strnstr(big, little, 12);
+    cr_assert_str_eq(ptr, "panic", "Expected strnstr to find 'panic'");
 
+    ptr = ft_strnstr(big, little, 8);
+    cr_assert_null(ptr, "Expected strnstr to return NULL when not found");
 
+    ptr = ft_strnstr(big, not_found, 12);
+    cr_assert_null(ptr, "Expected strnstr to return NULL when string is not found");
+
+    ptr = ft_strnstr(big, empty, 12);
+    cr_assert_str_eq(ptr, big, "Expected strnstr to return original string when searching for an empty string");
 }
-

@@ -1,34 +1,23 @@
-#include "../libft.h"
-#include "test.h"
+#include "criterion-2.4.2/include/criterion/criterion.h"
+#include "../libft.h" 
+#include <stdio.h>
 
-void	test_ft_strrchr()
-{
-	char	*str = "Beneath the Demon Moon.";
-	char	*ptr1;
-	char	*ptr2;
-	char	*ptr3;
-	int	output;
-	int	result;
+Test(ft_strrchr, locate_last_occurrence) {
+    char *str = "Beneath the Demon Moon.";
+    char *ptr;
 
-	printf(">>> FT_STRRCHR: ");
-	result = 1;
-	ptr1 = ft_strrchr(str, 'e');
-	ptr2 = ft_strrchr(str, '\0');
-	output = ft_strncmp(ptr1, "emon Moon.", 10);
-	if (output)
-		result = 0;
-	if (&str[13] != ptr1)
-		result = 0;
-	if(*ptr2 != '\0')
-		result = 0;
-	if(ptr2 != &str[23])
-		result = 0;
-	ptr3 = ft_strrchr(str, 'Z');
-	if(ptr3 != NULL)
-		result = 0;
-	ptr1 = ft_strchr(str, 't' + 256);
-	output = ft_strncmp(ptr1, "Beneath the Demon Moon.", 23);
-	if (output)
-		result = 0;
-	show(result);
+    ptr = ft_strrchr(str, 'e');
+    cr_assert_str_eq(ptr, "emon Moon.", "Expected 'emon Moon.' but got '%s'", ptr);
+
+    ptr = ft_strrchr(str, '\0');
+    cr_assert_eq(ptr, str + 23, "Expected pointer to the end of string.");
+
+    ptr = ft_strrchr(str, 'Z');
+    cr_assert_null(ptr, "Expected NULL for non-existent character.");
+
+	ptr = ft_strrchr(str, 'D' + 256);
+
+	printf("-> %s\n", str);
+
+    cr_expect_str_eq(ptr, "Demon Moon.", "Failed to find D");
 }

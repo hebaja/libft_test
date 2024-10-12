@@ -1,76 +1,11 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
-#include <stdio.h>
 
-int	test_lstsize_front(t_list **lst, char *str, int s)
-{
-	t_list	*l;
-	int	size;
+Test(ft_lstsize, size_of_list) {
+    t_list *lst = ft_lstnew(ft_strdup("Nevermore"));
+    ft_lstadd_back(&lst, ft_lstnew(ft_strdup("Dream Theater")));
+    ft_lstadd_back(&lst, ft_lstnew(ft_strdup("Cripper")));
+    ft_lstadd_back(&lst, ft_lstnew(ft_strdup("Thin Lizzy")));
 
-	l = ft_lstnew(str);
-	ft_lstadd_front(lst, l);// Adds to the front of lsts
-	size = ft_lstsize(*lst);
-	if (size != s) //tests size
-		return (0);
-	return (1);
-}
-
-int	test_lstsize_back(t_list **lst, char *str, int s)
-{
-	t_list	*l;
-	int	size;
-
-	l = ft_lstnew(str);
-	ft_lstadd_back(lst, l);// Adds to the back of lsts
-	size = ft_lstsize(*lst);
-	if (size != s) //tests size
-		return (0);
-	return (1);
-}
-
-void	test_ft_lstsize()
-{
-	int	result;
-	int	output;
-	int	size;
-	char	*str1 = ft_strdup("Nevermore");
-	char	*str2 = ft_strdup("Dream Theater");
-	char	*str3 = ft_strdup("Cripper");
-	char	*f1 = ft_strdup("Strawberry");
-	char	*f2 = ft_strdup("Kiwi");
-	char	*f3 = ft_strdup("Banana");
-	char	*f4 = ft_strdup("Watermelon");
-	t_list	*lst1 = ft_lstnew(str1);
-	t_list	*lst2 = ft_lstnew(f1);
-	printf(">>> FT_LSTSIZE: ");
-	result = 1;
-	//Add front tests
-	size = 1;
-	output = ft_lstsize(lst1);
-	if (output != 1) //First list must be one
-		result = 0;
-	output = test_lstsize_front(&lst1, str2, ++size);
-	if (!output)
-		result = 0;
-	output = test_lstsize_front(&lst1, str3, ++size);
-	if (!output)
-		result = 0;
-	//Add back tests
-	size = 1;
-	output = ft_lstsize(lst2);
-	if (output != 1) //First list must be one
-		result = 0;
-	output = test_lstsize_back(&lst2, f2, ++size);
-	if (!output)
-		result = 0;
-	output = test_lstsize_back(&lst2, f3, ++size);
-	if (!output)
-		result = 0;
-	output = test_lstsize_back(&lst2, f4, ++size);
-	if (!output)
-		result = 0;
-
-	show(result);
-	free(lst1);
-	free(lst2);
+    cr_assert_eq(ft_lstsize(lst), 4, "Expected list size of 4.");
 }

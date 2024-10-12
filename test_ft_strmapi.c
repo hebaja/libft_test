@@ -1,34 +1,30 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
 #include "test.h"
 
 char	up(unsigned int i, char c)
 {
+	(void)i;
 	return (c - 32);
 }
 
 char	low(unsigned int i, char c)
 {
+	(void)i;
 	return (c + 32);
 }
 
-void	test_ft_strmapi()
+Test(ft_strmapi, basic)
 {
-	int	result;
-	int	output;
-	char	*str1 = "uppercase";
-	char	*str2 = "LOWERCASE";
-	char	*ptr1;
+    char    *str1 = "uppercase";
+    char    *str2 = "LOWERCASE";
+    char    *ptr1;
 
-	printf(">>> FT_STRMAPI: ");
-	result = 1;
-	ptr1 = ft_strmapi(str1, up);
-	output = ft_strncmp(ptr1, "UPPERCASE", 9);
-	if (output)
-		result = 0;
-	ptr1 = ft_strmapi(str2, low);
-	output = ft_strncmp(ptr1, "lowercase", 9);
-	if (output)
-		result = 0;
-	show(result);
-	free(ptr1);
+    ptr1 = ft_strmapi(str1, up);
+    cr_assert_str_eq(ptr1, "UPPERCASE", "Expected str1 to be 'UPPERCASE'");
+    free(ptr1);
+
+    ptr1 = ft_strmapi(str2, low);
+    cr_assert_str_eq(ptr1, "lowercase", "Expected str2 to be 'lowercase'");
+    free(ptr1);
 }

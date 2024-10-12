@@ -1,36 +1,69 @@
 #include "../libft.h"
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "test.h"
-#include <stdio.h>
 
-void	test_ft_lstiter()
+char	str_matrix[4][14] = { "Dream Theater\0", "Thin Lizzy\0", "Cripper\0", "Nevermore\0" };
+
+void	del_nothing() {}
+
+void	_iter_lst_fd(void *cont)
 {
-	int	result;
-	int	output;
-	int	bytes = -1;
+	char    *file = "output.txt";
+    int fd_w = open(file, O_APPEND | O_WRONLY | O_CREAT, 0644);
+	ft_putstr_fd(cont, fd_w);
+	close(fd_w);
+}
+
+
+void	test_ft_lstiter(t_list *lst, const char *file)
+{
+	int	fd_o;
+	char	buf[15];
+	int	bytes;
 	int	i = 0;
-	char	*file = "output.txt";
-	char	strs[4][14] = { "Dream Theater\0", "Thin Lizzy\0", "Cripper\0", "Nevermore\0" };
-	int	sizes[4] = {ft_strlen(strs[0]), ft_strlen(strs[1]), ft_strlen(strs[2]), ft_strlen(strs[3]) };
-	int     fd_o = open(file, O_RDONLY);
-	char	buf[sizes[0]];
-	printf(">>> FT_LSTITER: ");
-	t_list	*lst = ft_lstnew(strs[3]);
-	result = 1;
-	add_lst_node(&lst, strs[2]);
-	add_lst_node(&lst, strs[1]);
-	add_lst_node(&lst, strs[0]);
+	int	output;
+	int	result = 1;
+	int	sizes[4] = { ft_strlen(str_matrix[0]), ft_strlen(str_matrix[1]), ft_strlen(str_matrix[2]), ft_strlen(str_matrix[3]) };
+
+	// Remove file if it exists to simulate fresh start
 	remove(file);
-	ft_lstiter(lst, iter_lst_fd); //writes iteration to file output.txt
-	bytes = read(fd_o, buf, sizes[i++]);
-	buf[sizes[0]] = 0;
-	while(bytes)
+
+	// Apply ft_lstiter
+	ft_lstiter(lst, _iter_lst_fd);
+
+	// Open the output file for reading
+	fd_o = open(file, O_RDONLY);
+	cr_assert(fd_o != -1, "Failed to open file for reading.");
+
+	// Read and verify the contents
+	bytes = read(fd_o, buf, sizes[i]);
+	buf[bytes] = '\0';
+	while (bytes > 0)
 	{
-		output = ft_strncmp(buf, strs[i - 1], ft_strlen(buf)); //checks if what was written in output.txt matches
-		if (output) // if true, string are different
+		output = ft_strncmp(buf, str_matrix[i], bytes);
+		if (output != 0)  // Strings are different
 			result = 0;
-		bytes = read(fd_o, buf, sizes[i++]);
+		i++;
+		bytes = read(fd_o, buf, sizes[i]);
 		buf[bytes] = '\0';
 	}
-	show(result);
+
+	cr_expect(result == 1, "List iteration did not write the expected strings to the file.");
+
 	close(fd_o);
+}
+
+Test(ft_lstiter, list_iteration_file_output)
+{
+	// Create the linked list
+	t_list	*lst = ft_lstnew(str_matrix[3]);
+	ft_lstadd_front(&lst, ft_lstnew(str_matrix[2]));
+	ft_lstadd_front(&lst, ft_lstnew(str_matrix[1]));
+	ft_lstadd_front(&lst, ft_lstnew(str_matrix[0]));
+
+	// Test ft_lstiter writing to the file
+	test_ft_lstiter(lst, "output.txt");
+
+	// Clean up memory
+	ft_lstclear(&lst, del_nothing);
 }

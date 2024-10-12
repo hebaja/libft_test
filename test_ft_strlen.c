@@ -1,27 +1,19 @@
-#include "../libft.h"
-#include "test.h"
+// #include <criterion/criterion.h>
+#include "criterion-2.4.2/include/criterion/criterion.h"
+#include "../libft.h"  // Include your header file with the prototypes
 
-void	test_ft_strlen()
+Test(ft_strlen_suite, test_ft_strlen)
 {
-	char	*str = "Hello world!";
-	char	*str2 = " ";
-	char	*str3 = "";
-	char	*str4;
-	int	i;
-	int	output;
-	int	result;
+    char *str = "Hello world!";
+    char *str2 = " ";
+    char *str3 = "";
 
-	i = 0;
-	result = 1;
-	printf(">>> FT_STRLEN: ");
-	output = ft_strlen(str);
-	if (output != 12)
-		result = 0;
-	output = ft_strlen(str2);
-	if (output != 1)
-		result = 0;
-	output = ft_strlen(str3);
-	if (output != 0)
-		result = 0;
-	show(result);
+    // Test 1: Check length of "Hello world!"
+    cr_expect_eq(ft_strlen(str), 12, "ft_strlen(\"%s\") returned %d, expected 12", str, ft_strlen(str));
+
+    // Test 2: Check length of a single space " "
+    cr_expect_eq(ft_strlen(str2), 1, "ft_strlen(\"%s\") returned %d, expected 1", str2, ft_strlen(str));
+
+    // Test 3: Check length of an empty string ""
+    cr_expect_eq(ft_strlen(str3), 0, "ft_strlen(\"%s\") returned %d, expected 0", str3, ft_strlen(str));
 }

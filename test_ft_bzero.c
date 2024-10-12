@@ -1,14 +1,8 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
-#include <stdio.h>
 
-void	test_ft_bzero()
-{
-	char	str[17] = "zero this string\0";
-	int	result;
-
-	printf(">>> FT_BZERO: ");
-	ft_bzero(str + 5, 4);
-	result = !ft_strncmp(str, "zero \0", 6);
-	show(result);
+Test(ft_bzero, basic_test) {
+    char str[17] = "zero this string\0";
+    ft_bzero(str + 5, 4);
+    cr_expect_str_eq(str, "zero \0this string");
 }

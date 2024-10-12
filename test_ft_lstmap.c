@@ -1,10 +1,13 @@
 #include "../libft.h"
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "test.h"
-#include <stdio.h>
 
 char	strs[4][14] = { "Dream Theater\0", "Thin Lizzy\0", "Cripper\0", "Nevermore\0" };
 
-void	del_nothing(void *p) {}
+void	_del_nothing(void *p) 
+{
+	(void)p;
+}
 
 void	map_up(int *c)
 {
@@ -26,42 +29,40 @@ void	*test_map_iter(void *cont)
 	return n_content;
 }
 
-void	test_lst_map(t_list *lst)
+Test(ft_lstmap, list_mapped_uppercase)
 {
-	int	i;
-	int	output;
-	int	result;
-	int	size;
+	t_list	*lst;
+	t_list	*n_lst;
 	t_list	*current_lst;
+	int	i;
+	int	result;
 	char	strs_up[4][14] = { "DREAM THEATER\0", "THIN LIZZY\0", "CRIPPER\0", "NEVERMORE\0" };
-	int	sizes[4] = {ft_strlen(strs[0]), ft_strlen(strs[1]), ft_strlen(strs[2]), ft_strlen(strs[3]) };
 
+	// Create the initial linked list
+	lst = ft_lstnew(strs[3]);
+	ft_lstadd_front(&lst, ft_lstnew(strs[2]));
+	ft_lstadd_front(&lst, ft_lstnew(strs[1]));
+	ft_lstadd_front(&lst, ft_lstnew(strs[0]));
+
+	// Apply ft_lstmap
+	n_lst = ft_lstmap(lst, test_map_iter, _del_nothing);
+
+	// Test if the content of the new list is uppercased correctly
+	current_lst = n_lst;
 	i = 0;
 	result = 1;
-	size = ft_lstsize(lst);
-	current_lst = lst;
 	while (current_lst)
 	{
-		output = ft_strncmp(current_lst->content, strs_up[i], ft_strlen(strs_up[i]));
-		if (output) //if true, string are different
+		int output = ft_strncmp(current_lst->content, strs_up[i], ft_strlen(strs_up[i]));
+		if (output != 0)  // Strings are different
 			result = 0;
 		current_lst = current_lst->next;
 		i++;
 	}
-	show(result);
-}
 
-void	test_ft_lstmap()
-{
-	int	result;
-	int	output;
-	printf(">>> FT_LSTMAP: ");
-	result = 1;
-	t_list	*n_lst;
-	t_list	*lst = ft_lstnew(strs[3]);
-	add_lst_node(&lst, strs[2]);
-	add_lst_node(&lst, strs[1]);
-	add_lst_node(&lst, strs[0]);
-	n_lst = ft_lstmap(lst, test_map_iter, del_nothing); //writes iteration to file output.txt
-	test_lst_map(n_lst);
+	cr_expect(result == 1, "List mapping did not transform all strings to uppercase correctly.");
+
+	// Clean up memory
+	ft_lstclear(&lst, _del_nothing);
+	ft_lstclear(&n_lst, _del_nothing);
 }

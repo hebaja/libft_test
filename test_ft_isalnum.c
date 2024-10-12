@@ -1,26 +1,13 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
 #include "test.h"
 
-void	test_ft_isalnum()
-{
-	int	i;
-	int	result;
-	int	output;
-
-	i = 0;
-	result = 1;
-	printf(">>> FT_ISALNUM: ");
-	while (i < ASCII_LIMIT)
-	{
-		output = ft_isalnum(i);
-		if (output == 1 && i < 48 || output == 0 && (i >= 48 && i <= 57)
-				|| output == 1 && (i > 57 && i < 65)
-				|| output == 0 && (i >= 65 && i <= 90)
-				|| output == 1 && (i > 90 && i < 97)
-				|| output == 0 && (i >= 97 && i <= 122)
-				|| output == 1 && i > 122)
-			result = 0;
-		i++;
-	}
-	show(result);
+Test(ft_isalnum, basic_test) {
+    for (int i = 0; i < ASCII_LIMIT; i++) {
+        if ((i >= '0' && i <= '9') || (i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z')) {
+            cr_expect(ft_isalnum(i) != 0, "Character %c should be alphanumeric", i);
+        } else {
+            cr_expect(ft_isalnum(i) == 0, "Character %c should not be alphanumeric", i);
+        }
+    }
 }

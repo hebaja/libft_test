@@ -1,26 +1,20 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
 #include "test.h"
-#include <fcntl.h>
 
-void	test_ft_putchar_fd()
-{
-	int	result;
-	char    *file = "output.txt";
-	char	buf[1];
-	char	c;
-	int	fd_w = open(file, O_TRUNC | O_WRONLY | O_CREAT, 0664);
-	int     fd_o = open(file, O_RDONLY);
+Test(ft_putchar_fd, basic_test) {
+    char *file = "outputs/putchar.txt";
+    char buf[1];
+    int fd_w = open(file, O_TRUNC | O_WRONLY | O_CREAT, 0664);
+    int fd_o = open(file, O_RDONLY);
 
-	printf(">>> FT_PUTCHAR_FD: ");
-	result = 1;
-	if (fd_w == -1)
-		printf("file not found. ");
-	ft_putchar_fd('c', fd_w);
-	read(fd_o, buf, 1);
-	c = buf[0];
-	if (c != 'c')
-		result = 0;
-	show(result);
-	close(fd_w);
-	close(fd_o);
+    cr_assert_neq(fd_w, -1, "File open error.");
+
+    ft_putchar_fd('c', fd_w);
+
+    read(fd_o, buf, 1);
+
+    cr_expect_eq(buf[0], 'c', "Character written does not match.");
+    close(fd_w);
+    close(fd_o);
 }

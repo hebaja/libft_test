@@ -1,24 +1,9 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
 
-void	test_ft_lstnew()
-{
-	int	i;
-	int	result;
-	int	output;
-	char	*str = "Nevermore";
-	printf(">>> FT_LSTNEW: ");
-	result = 1;
-	output = 1;
-	i = -1;
-	t_list	*lst;
-	t_list	*arr_lst;
-	lst = ft_lstnew((char *)str);
-	output = ft_strncmp((char *)lst->content, "Nevermore", 9);
-	if (result)
-		output = 0;
-	if(lst->next != NULL)
-		output = 0;
-	show(result);
-	free(lst);
+Test(ft_lstnew, new_list_element) {
+    t_list *lst = ft_lstnew(ft_strdup("Nevermore"));
+
+    cr_assert_str_eq(lst->content, "Nevermore", "Expected 'Nevermore' as content.");
+    cr_assert_null(lst->next, "Expected next to be NULL.");
 }

@@ -1,4 +1,7 @@
 *.out
 *.o
 *.a
+mandatory
 bonus
+output.txt
+outputs/

@@ -1,42 +1,27 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
-#include <stdio.h>
 
-void	test_ft_strlcat()
+Test(ft_strlcat, basic)
 {
-	char	dst1[12] = "Lovely\0";
-	char	src1[6] = " day!\0";
-	char	dst2[6] = "Dream\0";
-	char	src2[9] = " Theater\0";
-	int	result;
-	int	output;
-	int	r_len;
+    char    dst1[12] = "Lovely\0";
+    char    src1[6] = " day!\0";
+    char    dst2[6] = "Dream\0";
+    char    src2[9] = " Theater\0";
+    int     r_len;
 
-	printf(">>> FT_STRLCAT: ");
-	result = 1;
-	r_len = ft_strlcat(dst1, src1, 3);
-	output = ft_strncmp(dst1, "Lovely\0", 7);
-	if (output)
-		result = 0;
-	if (r_len != 8)
-		result = 0;
-	r_len = ft_strlcat(dst1, src1, 6);
-	output = ft_strncmp(dst1, "Lovely\0", 7);
-	if (output)
-		result = 0;
-	if (r_len != 11)
-		result = 0;
-	r_len = ft_strlcat(dst1, src1, 10);
-	output = ft_strncmp(dst1, "Lovely da\0", 10);
-	if (output)
-		result = 0;
-	if (r_len != 11)
-		result = 0;
-	r_len = ft_strlcat(dst2, src2, 14);
-	output = ft_strncmp(dst2, "Dream Theater\0", 14);
-	if (output)
-		result = 0;
-	if (r_len != 13)
-		result = 0;
-	show(result);
+    r_len = ft_strlcat(dst1, src1, 3);
+    cr_assert_eq(r_len, 8, "Expected strlcat length to be 8 when n = 3");
+    cr_assert_str_eq(dst1, "Lovely", "Expected dst1 to remain 'Lovely'");
+
+    r_len = ft_strlcat(dst1, src1, 6);
+    cr_assert_eq(r_len, 11, "Expected strlcat length to be 11 when n = 6");
+    cr_assert_str_eq(dst1, "Lovely", "Expected dst1 to remain 'Lovely'");
+
+    r_len = ft_strlcat(dst1, src1, 10);
+    cr_assert_eq(r_len, 11, "Expected strlcat length to be 11 when n = 10");
+    cr_assert_str_eq(dst1, "Lovely da", "Expected dst1 to be 'Lovely da'");
+
+    r_len = ft_strlcat(dst2, src2, 14);
+    cr_assert_eq(r_len, 13, "Expected strlcat length to be 13 when n = 14");
+    cr_assert_str_eq(dst2, "Dream Theater", "Expected dst2 to be 'Dream Theater'");
 }

@@ -1,21 +1,12 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
 
-void	test_ft_isascii()
-{
-	int	i;
-	int	result;
-	int	output;
-
-	i = -2;
-	result = 1;
-	printf(">>> FT_ISASCII: ");
-	while (i < ASCII_LIMIT + 3)
-	{
-		output = ft_isascii(i);
-		if (output == 1 && i < 0 || output == 0 && (i >= 0 && i <= 127) || output == 1 && i > 127)
-			result = 0;
-		i++;
-	}
-	show(result);
+Test(ft_isascii, basic_test) {
+    for (int i = -2; i < 130; i++) {
+        if (i >= 0 && i <= 127) {
+            cr_expect(ft_isascii(i) != 0, "Value %d should be ASCII", i);
+        } else {
+            cr_expect(ft_isascii(i) == 0, "Value %d should not be ASCII", i);
+        }
+    }
 }

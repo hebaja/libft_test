@@ -1,20 +1,11 @@
+#include "criterion-2.4.2/include/criterion/criterion.h"
 #include "../libft.h"
-#include "test.h"
 
-void	test_ft_strdup()
+Test(ft_strdup, basic)
 {
-	int	output;
-	int	result;
-	char	*str = "Nevermore";
-	char	*ptr;
-	
-	printf(">>> FT_STRDUP: ");
-	result = 1;
-	ptr = ft_strdup(str);
-	output = ft_strncmp(ptr, "Nevermore", 9);
-	if (output)
-		result = 0;
-	show(result);
-	free(ptr);
-}
+    char    *str = "Nevermore";
+    char    *ptr = ft_strdup(str);
 
+    cr_assert_str_eq(ptr, "Nevermore", "Expected ft_strdup to return 'Nevermore'");
+    free(ptr);
+}
