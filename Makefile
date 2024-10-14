@@ -16,9 +16,11 @@ LIBRARY = ../libft/libft.a
 
 # Compile all test files with Criterion and your static library
 test: $(TESTS) $(LIBRARY)
+	mkdir -p outputs
 	$(CC) $(CFLAGS) $(CRITERION_INCLUDE) $(TESTS) $(LIBRARY) $(CRITERION_LIB) -o mandatory
 
 bonus: $(BONUS_TESTS) $(LIBRARY)
+	mkdir -p outputs
 	$(CC) $(CFLAGS) $(CRITERION_INCLUDE) $(BONUS_TESTS) $(LIBRARY) $(CRITERION_LIB) -o bonus
 
 clean:
