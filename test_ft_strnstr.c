@@ -9,6 +9,9 @@ Test(ft_strnstr, basic)
     char    *empty = "";
     char    *ptr;
 
+    ptr = ft_strnstr("Nevermore", "Nevermore", 9);
+    cr_assert_str_eq(ptr, "Nevermore", "Should pass when big and little are the same.");
+
     ptr = ft_strnstr(big, little, 12);
     cr_assert_str_eq(ptr, "panic", "Expected strnstr to find 'panic'");
 
