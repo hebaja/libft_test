@@ -14,10 +14,10 @@ Test(ft_calloc, basic_test) {
     free(arr);
 }
 
-// Test(ft_calloc, zero_size) {
-//     cr_expect_null(ft_calloc(0, 10));
-//     cr_expect_null(ft_calloc(10, 0));
-// }
+Test(ft_calloc, zero_size) {
+    cr_expect_not_null(ft_calloc(0, 10));
+    cr_expect_not_null(ft_calloc(10, 0));
+}
 
 Test(ft_calloc, overflow_test) {
     cr_expect_null(ft_calloc(4, 536870912)); // Triggering potential overflow
